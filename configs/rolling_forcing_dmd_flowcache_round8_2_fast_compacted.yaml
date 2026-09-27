@@ -1,0 +1,96 @@
+generator_ckpt: checkpoints/ode_init.pt
+generator_fsdp_wrap_strategy: size
+real_score_fsdp_wrap_strategy: size
+fake_score_fsdp_wrap_strategy: size
+real_name: Wan2.1-T2V-14B
+text_encoder_fsdp_wrap_strategy: size
+denoising_step_list:
+- 1000
+- 800
+- 600
+- 400
+- 200
+warp_denoising_step: true
+ts_schedule: false
+num_train_timestep: 1000
+timestep_shift: 5.0
+guidance_scale: 3.0
+denoising_loss_type: flow
+mixed_precision: true
+seed: 0
+sharding_strategy: hybrid_full
+lr: 1.5e-06
+lr_critic: 4.0e-07
+beta1: 0.0
+beta2: 0.999
+beta1_critic: 0.0
+beta2_critic: 0.999
+data_path: prompts/vidprom_filtered_extended.txt
+batch_size: 1
+ema_weight: 0.99
+ema_start_step: 200
+total_batch_size: 64
+log_iters: 100
+negative_prompt: '色调艳丽，过曝，静态，细节模糊不清，字幕，风格，作品，画作，画面，静止，整体发灰，最差质量，低质量，JPEG压缩残留，丑陋的，残缺的，多余的手指，画得不好的手部，画得不好的脸部，畸形的，毁容的，形态畸形的肢体，手指融合，静止不动的画面，杂乱的背景，三条腿，背景人很多，倒着走'
+dfake_gen_update_ratio: 5
+image_or_video_shape:
+- 1
+- 21
+- 16
+- 60
+- 104
+distribution_loss: dmd
+trainer: score_distillation
+gradient_checkpointing: true
+num_frame_per_block: 3
+load_raw_video: false
+model_kwargs:
+  timestep_shift: 5.0
+
+flowcache:
+  enabled: true
+  debug: false
+
+  metadata_enabled: false
+  metadata_output_path: ${oc.env:FLOWCACHE_FAST_JSONL,null}
+  log_kv_ranges: false
+  log_summary: true
+
+  compression_candidate_enabled: false
+  log_attention_parts: false
+  log_compression_candidates: false
+
+  kv_compress_enabled: false
+  kv_compress_dry_run: false
+  kv_compress_real_enabled: false
+
+  cache_body_compress_enabled: false
+  cache_body_compress_real_enabled: false
+
+  persistent_cache_compress_enabled: false
+  persistent_cache_compress_real_enabled: false
+
+  compacted_kv_enabled: true
+  compacted_kv_real_enabled: true
+  compacted_kv_target_ratio: ${oc.env:FLOWCACHE_COMPACTED_RATIO,0.25}
+  compacted_kv_strategy: uniform
+  compacted_kv_min_history_tokens: ${oc.env:FLOWCACHE_COMPACTED_MIN_HISTORY,0}
+  compacted_kv_apply_to_denoise: true
+  compacted_kv_apply_to_current_only: false
+  compacted_kv_apply_to_clean_cache_update: ${oc.env:FLOWCACHE_COMPACTED_CLEAN,false}
+  compacted_kv_protect_sink: true
+  compacted_kv_protect_current: true
+  compacted_kv_debug_verify: false
+  compacted_kv_log_events: false
+  compacted_kv_max_events: null
+
+  kv_compress_shadow_compare: false
+  kv_compress_shadow_max_events: 0
+
+  output_reuse_enabled: false
+  output_reuse_dry_run_enabled: false
+  output_reuse_log_jsonl: false
+
+  profiler_enabled: false
+  profiler_fine_enabled: false
+  attention_profiler_enabled: false

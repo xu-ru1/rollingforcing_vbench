@@ -1,0 +1,153 @@
+independent_first_frame: false
+warp_denoising_step: false
+weight_decay: 0.01
+same_step_across_blocks: true
+discriminator_lr_multiplier: 1.0
+last_step_only: false
+i2v: false
+num_training_frames: 27
+gc_interval: 100
+context_noise: 0
+causal: true
+
+ckpt_step: 0
+prompt_name: MovieGenVideoBench
+prompt_path: prompts/MovieGenVideoBench.txt
+eval_first_n: 64
+num_samples: 1
+height: 480
+width: 832
+num_frames: 81
+
+step_cache:
+  enabled: false
+  policy: fixed
+  schedule: null
+  base_threshold: 0.0
+  total_local_stages: 5
+  warmup_local_stages: 1
+  protect_last_stage: true
+  protect_window_first_block: true
+  force_stage_index: null
+  force_window_indices: []
+  diagnostic_injection_points: []
+  metric_observer_enabled: false
+  metric_observer_output_path: null
+  metric_spatial_grid: [2, 2]
+  adapter: layer_residual_current_kv_v1
+  implementation: sparse
+  decision_log_path: null
+  execution_log_path: null
+  summary_output_path: null
+  flops_output_path: null
+  debug_validate_residual_finite: false
+
+flowcache:
+  enabled: false
+  debug: false
+  output_reuse_enabled: false
+  output_reuse_dry_run_enabled: false
+  output_reuse_metric: l1rel
+  output_reuse_thresholds: [0.03, 0.05, 0.08, 0.10]
+  output_reuse_log_jsonl: true
+  output_reuse_debug_verify: false
+  kv_compress_enabled: false
+  kv_compress_dry_run: false
+  kv_compress_real_enabled: false
+  kv_compress_target_ratio: 0.5
+  kv_compress_min_candidate_tokens: 4680
+  kv_compress_strategy: uniform
+  kv_compress_protect_sink: true
+  kv_compress_protect_current: true
+  kv_compress_apply_to_denoise: true
+  kv_compress_apply_to_clean_cache_update: false
+  kv_compress_apply_to_current_only: false
+  kv_compress_shadow_compare: false
+  kv_compress_shadow_max_events: 5
+  kv_compress_max_windows: null
+  kv_compress_max_layers: null
+  cache_body_compress_enabled: false
+  cache_body_compress_real_enabled: false
+  cache_body_compress_target_ratio: 0.5
+  cache_body_compress_strategy: uniform
+  cache_body_compress_min_candidate_tokens: 4680
+  cache_body_compress_apply_to_denoise: true
+  cache_body_compress_apply_to_clean_cache_update: false
+  cache_body_compress_apply_to_current_only: false
+  cache_body_compress_protect_sink: true
+  cache_body_compress_protect_current: true
+  cache_body_compress_max_windows: null
+  cache_body_compress_max_layers: null
+  cache_body_compress_debug_verify: true
+  persistent_cache_compress_enabled: false
+  persistent_cache_compress_real_enabled: false
+  persistent_cache_compress_target_ratio: 0.5
+  persistent_cache_compress_strategy: uniform
+  persistent_cache_compress_min_candidate_tokens: 4680
+  persistent_cache_compress_apply_to_denoise: true
+  persistent_cache_compress_apply_to_clean_cache_update: false
+  persistent_cache_compress_apply_to_current_only: false
+  persistent_cache_compress_protect_sink: true
+  persistent_cache_compress_protect_current: true
+  persistent_cache_compress_sidecar_enabled: true
+  persistent_cache_compress_debug_verify: true
+  persistent_cache_compress_max_windows: null
+  persistent_cache_compress_max_layers: null
+  compacted_kv_enabled: false
+  compacted_kv_real_enabled: false
+  compacted_kv_target_ratio: 0.5
+  compacted_kv_strategy: uniform
+  compacted_kv_min_history_tokens: 4680
+  compacted_kv_apply_to_denoise: true
+  compacted_kv_apply_to_current_only: false
+  compacted_kv_apply_to_clean_cache_update: false
+  compacted_kv_protect_sink: true
+  compacted_kv_protect_current: true
+  compacted_kv_debug_verify: true
+  compacted_kv_log_events: true
+  compacted_kv_max_events: null
+  eval_metrics_enabled: false
+  eval_runtime_enabled: false
+  eval_memory_enabled: false
+  metadata_enabled: false
+  metadata_output_path: null
+  compression_candidate_enabled: false
+  log_attention_parts: false
+  log_compression_candidates: false
+  l1rel_threshold: 0.0
+  protect_sink_tokens: true
+  log_every_window: true
+  log_kv_ranges: false
+  log_summary: true
+  profiler_enabled: false
+  profiler_mode: coarse
+  profiler_output_path: logs/round7_profile.jsonl
+  profiler_summary_path: logs/round7_profile_summary.json
+  profiler_log_events: true
+  profiler_cuda_synchronize: false
+  profiler_fine_enabled: false
+  profiler_sample_layers: [0, 10, 20, 29]
+  profiler_sample_every_n_steps: 1
+  profiler_record_block_forward: true
+  profiler_record_attention: true
+  profiler_record_mlp: true
+  profiler_record_kv_ops: true
+  profiler_record_clean_cache_update: true
+  profiler_record_decode_save: true
+  attention_profiler_enabled: false
+  attention_profiler_output_path: logs/round8_0_attention_profile.jsonl
+  attention_profiler_summary_path: logs/round8_0_attention_profile_summary.json
+  attention_profiler_mode: sampled
+  attention_profiler_cuda_event: true
+  attention_profiler_cuda_synchronize: false
+  attention_profiler_sample_layers: [0, 10, 20, 29]
+  attention_profiler_sample_every_n_steps: 8
+  attention_profiler_max_events: 240
+  attention_profiler_record_rope: true
+  attention_profiler_record_qkv: true
+  attention_profiler_record_cache_assembly: true
+  attention_profiler_record_padding: true
+  attention_profiler_record_kernel: true
+  attention_profiler_record_output_proj: true
+  attention_profiler_record_cache_write: true
+  attention_profiler_record_clean_cache_update: true

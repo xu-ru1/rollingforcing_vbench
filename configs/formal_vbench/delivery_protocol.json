@@ -1,0 +1,100 @@
+{
+  "schema": "rollingforcing_step_cache_git_delivery_v1",
+  "source": "R8 pre_vbench_immutable_manifest, 2026-09-21",
+  "validated_lab_inference_sha256_after_r9_loader_cleanup": "f580fc6a4c46534d36f3235a790a0a611105eaa99a6cd129874466a2e658d7f5",
+  "checkpoint_sha256": "08448992460d85ef1b992dd30585d5724d098d805a48399730c8e717027a6d9d",
+  "vbench_metadata_sha256": "5dd2de80ee43cda750b2b72ea7023657c0b90d3702041c7e4608c65dbe50dccd",
+  "prompt_index_sha256": "edbdd236cfea8e17d647cd0c8ac9813a1afd83574cbe78714065b69f3226b1e2",
+  "prompt_list_sha256": "d802b4830e9ea85550e5fad2e9f077d74f79fcfad60d0b56b1314a0f5b652dc8",
+  "official_metadata_records": 946,
+  "unique_generation_prompts": 944,
+  "seed": 0,
+  "latent_frames": 126,
+  "latent_frames_per_block": 3,
+  "rolling_blocks": 42,
+  "raw_decoded_frames": 501,
+  "vbench_crop_start_inclusive": 0,
+  "vbench_crop_end_exclusive": 480,
+  "fps": 16,
+  "methods": {
+    "rf_vanilla": "99474dea35b34c5556f1b1080fdf9caf3bcdbb2fc213b46dcbf6612c55f04575",
+    "rf_fixed_slow": "3efe8fbf76729b304c591fd803061c9059f4300987595a4e29690f4e02fd7e61",
+    "rf_front_slow": "739138c22f147bbb1a0e368b8c6de6570915b31c26a67cba98636239ba04bec8",
+    "rf_fixed_fast": "ea817b5d7f00ea15a8081101f4bf77fdbf25f1ca9c4856db62df1ca6620091f5",
+    "rf_front_fast": "c414fbeea89c5d65dda6132c9e63dd4d5df981ebc0860eb7bd0c83ffa1fc5a1a",
+    "rf_u_shape_fast": "985676ef199f84808b4597f0ed3397d2cb677eaafb9f5b22d0323ed1a5ce8cc6"
+  },
+  "flop_convention": "2 FLOPs/MAC; actual Linear, Conv3d, and QK/AV tensor products; main rolling DiT and clean-cache forward included; norm, elementwise, RoPE, softmax, scheduler, VAE, video encoding excluded",
+  "source_files_sha256": {
+    "inference.py": {
+      "sha256": "f580fc6a4c46534d36f3235a790a0a611105eaa99a6cd129874466a2e658d7f5",
+      "provenance": "lab_gpu_validated_r9_loader_cleanup",
+      "r7_sha256": "9a84092caabe483dcf9ae28467be48bee5909de32078c66be68c6f23544ceb95"
+    },
+    "pipeline/rolling_forcing_inference.py": {
+      "sha256": "725c91111d3c246d7cbb5d35546d037ef6d594e772add7e280473ca1f4156ef9",
+      "provenance": "r7_immutable_manifest_in_r8_pre_vbench"
+    },
+    "utils/wan_wrapper.py": {
+      "sha256": "7aaa149f90e271e9ada28eeeb08b0d67403d9cd234c001b4282cf609bdd6b670",
+      "provenance": "delivery_only_path_resolution_amendment",
+      "r7_sha256": "55313c5801480056c1358ece304526f9e62edbe2988b0f012848603779c061d8",
+      "amendment": "WAN_MODEL_ROOT model-asset path portability; cache semantics unchanged"
+    },
+    "utils/step_cache_policy.py": {
+      "sha256": "8f1dd949cfa8f04aad33fe46914af0444a37314d1c2e5f8f05340c392a9c79cc",
+      "provenance": "r7_immutable_manifest_in_r8_pre_vbench"
+    },
+    "utils/step_cache_state.py": {
+      "sha256": "0097fc74841ddd7e2d6c6d6fb62b24f72e50ed8c0e748af41c023247bc676d9b",
+      "provenance": "r7_immutable_manifest_in_r8_pre_vbench"
+    },
+    "utils/step_cache_metric.py": {
+      "sha256": "1a251f0213db4b307f7606a2c084ed80fb574a41546380d6752cf7ffbb44ef98",
+      "provenance": "r7_immutable_manifest_in_r8_pre_vbench"
+    },
+    "utils/step_cache_runtime.py": {
+      "sha256": "fcb78042e4a21548cf049736bbc12cfcfe5ec64e1293dbda2b8bb167f398e4bf",
+      "provenance": "r7_immutable_manifest_in_r8_pre_vbench"
+    },
+    "utils/step_cache_sparse.py": {
+      "sha256": "ec76a9553951241409f7f6897ef4f1c3448b58c87325f9d7ab2011c3a6d47121",
+      "provenance": "r7_immutable_manifest_in_r8_pre_vbench"
+    },
+    "utils/step_cache_flops.py": {
+      "sha256": "53592c2a388b18819fef14f19fbfcfacf93c4fa7ac3505a0e1171938108beb1f",
+      "provenance": "r7_immutable_manifest_in_r8_pre_vbench"
+    },
+    "wan/modules/attention.py": {
+      "sha256": "78080578d283b248c6d5d2989efae263be98e7799e72c286d8572a0091716754",
+      "provenance": "r7_immutable_manifest_in_r8_pre_vbench"
+    },
+    "wan/modules/model.py": {
+      "sha256": "d497d965559796c2db7a24cc0a7d7a4b35cc4c1957a8ae0294b98d7ad7d97639",
+      "provenance": "r7_immutable_manifest_in_r8_pre_vbench"
+    },
+    "wan/modules/causal_model.py": {
+      "sha256": "6c3afc8154891b3b23616201df1732bffd571a9b54333125bc089dc7048d57a5",
+      "provenance": "r7_immutable_manifest_in_r8_pre_vbench"
+    },
+    "scripts/crop_step_cache_vbench_30s.py": {
+      "sha256": "5f0733e473b06104806b9d889046a3e337f0444a00133cb2ba74e449e9736a9b",
+      "provenance": "delivery_only_artifact_safety_amendment",
+      "r7_sha256": "5f81c83b0f6cf6066faa0cdd4abbf6c02c80ebaa80c9ad38910e495b1b8eef59",
+      "amendment": "Prevent overwrite and verify existing 480-frame crop; crop interval unchanged"
+    },
+    "scripts/commit_step_cache_vbench_shard.py": {
+      "sha256": "3f07b844e9854200fca16640c16481962528be7e4258daaab9365f6942fc99c9",
+      "provenance": "delivery_frozen_no_r7_source_hash_available"
+    },
+    "scripts/materialize_step_cache_vbench_standard.py": {
+      "sha256": "f9c8012f95c018b386df0e8f8d75f9279796129532bf472e7efa4348312aa892",
+      "provenance": "delivery_frozen_no_r7_source_hash_available"
+    }
+  },
+  "vbench_git_commit_frozen": null,
+  "vbench_git_commit_status": "NEED_SERVER_CHECK: R8 pre-vbench manifest recorded no VBench checkout commit",
+  "vbench_protocol": "fixed single-seed VBench protocol",
+  "migration_gate_prompt_sha256": "9e4e08f6c1664e443db1ac34fc46130a30d50c021decfff7c8a6fd1288c40ae1",
+  "migration_gate_prompt_provenance": "R7 formal smoke prompt 0; per-sample front-fast DiT FLOPs lower than Vanilla and three-prompt runtime recorded 7380 reuse block events; server gate must verify this prompt reuse independently"
+}

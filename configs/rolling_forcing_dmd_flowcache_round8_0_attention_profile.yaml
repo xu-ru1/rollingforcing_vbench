@@ -1,0 +1,104 @@
+generator_ckpt: checkpoints/ode_init.pt
+generator_fsdp_wrap_strategy: size
+real_score_fsdp_wrap_strategy: size
+fake_score_fsdp_wrap_strategy: size
+real_name: Wan2.1-T2V-14B
+text_encoder_fsdp_wrap_strategy: size
+denoising_step_list:
+- 1000
+- 800
+- 600
+- 400
+- 200
+warp_denoising_step: true
+ts_schedule: false
+num_train_timestep: 1000
+timestep_shift: 5.0
+guidance_scale: 3.0
+denoising_loss_type: flow
+mixed_precision: true
+seed: 0
+sharding_strategy: hybrid_full
+lr: 1.5e-06
+lr_critic: 4.0e-07
+beta1: 0.0
+beta2: 0.999
+beta1_critic: 0.0
+beta2_critic: 0.999
+data_path: prompts/vidprom_filtered_extended.txt
+batch_size: 1
+ema_weight: 0.99
+ema_start_step: 200
+total_batch_size: 64
+log_iters: 100
+negative_prompt: '鑹茶皟鑹充附锛岃繃鏇濓紝闈欐€侊紝缁嗚妭妯＄硦涓嶆竻锛屽瓧骞曪紝椋庢牸锛屼綔鍝侊紝鐢讳綔锛岀敾闈紝闈欐锛屾暣浣撳彂鐏帮紝鏈€宸川閲忥紝浣庤川閲忥紝JPEG鍘嬬缉娈嬬暀锛屼笐闄嬬殑锛屾畫缂虹殑锛屽浣欑殑鎵嬫寚锛岀敾寰椾笉濂界殑鎵嬮儴锛岀敾寰椾笉濂界殑鑴搁儴锛岀暩褰㈢殑锛屾瘉瀹圭殑锛屽舰鎬佺暩褰㈢殑鑲綋锛屾墜鎸囪瀺鍚堬紝闈欐涓嶅姩鐨勭敾闈紝鏉備贡鐨勮儗鏅紝涓夋潯鑵匡紝鑳屾櫙浜哄緢澶氾紝鍊掔潃璧?'
+dfake_gen_update_ratio: 5
+image_or_video_shape:
+- 1
+- 21
+- 16
+- 60
+- 104
+distribution_loss: dmd
+trainer: score_distillation
+gradient_checkpointing: true
+num_frame_per_block: 3
+load_raw_video: false
+model_kwargs:
+  timestep_shift: 5.0
+
+flowcache:
+  enabled: false
+  debug: false
+
+  metadata_enabled: false
+  metadata_output_path: null
+  log_kv_ranges: false
+  log_summary: false
+
+  compression_candidate_enabled: false
+  log_attention_parts: false
+  log_compression_candidates: false
+
+  kv_compress_enabled: false
+  kv_compress_dry_run: false
+  kv_compress_real_enabled: false
+
+  cache_body_compress_enabled: false
+  cache_body_compress_real_enabled: false
+
+  persistent_cache_compress_enabled: false
+  persistent_cache_compress_real_enabled: false
+
+  compacted_kv_enabled: false
+  compacted_kv_real_enabled: false
+
+  output_reuse_enabled: false
+  output_reuse_dry_run_enabled: false
+  output_reuse_log_jsonl: false
+
+  profiler_enabled: false
+  profiler_mode: coarse
+  profiler_output_path: null
+  profiler_summary_path: null
+  profiler_log_events: false
+  profiler_cuda_synchronize: false
+  profiler_fine_enabled: false
+
+  attention_profiler_enabled: ${oc.env:FLOWCACHE_ATTENTION_PROFILER_ENABLED,true}
+  attention_profiler_output_path: ${oc.env:FLOWCACHE_ATTENTION_PROFILER_OUTPUT_PATH,logs/round8_0_21_attention.jsonl}
+  attention_profiler_summary_path: ${oc.env:FLOWCACHE_ATTENTION_PROFILER_SUMMARY_PATH,logs/round8_0_21_attention_summary.json}
+  attention_profiler_mode: sampled
+  attention_profiler_cuda_event: true
+  attention_profiler_cuda_synchronize: false
+  attention_profiler_sample_layers: [0, 10, 20, 29]
+  attention_profiler_sample_every_n_steps: 8
+  attention_profiler_max_events: 240
+  attention_profiler_record_rope: true
+  attention_profiler_record_qkv: true
+  attention_profiler_record_cache_assembly: true
+  attention_profiler_record_padding: true
+  attention_profiler_record_kernel: true
+  attention_profiler_record_output_proj: true
+  attention_profiler_record_cache_write: true
+  attention_profiler_record_clean_cache_update: true
